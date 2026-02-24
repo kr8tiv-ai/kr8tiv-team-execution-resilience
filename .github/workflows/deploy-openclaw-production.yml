@@ -1,0 +1,44 @@
+name: Deploy OpenClaw Production
+
+on:
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    name: Deploy stack
+    runs-on: ubuntu-latest
+    environment: production
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Prepare SSH key
+        shell: bash
+        run: |
+          mkdir -p ~/.ssh
+          printf '%s\n' "${{ secrets.VPS_SSH_KEY }}" > ~/.ssh/deploy_key
+          chmod 600 ~/.ssh/deploy_key
+
+      - name: Run deploy script
+        shell: bash
+        env:
+          VPS_HOST: ${{ secrets.VPS_HOST }}
+          VPS_USER: ${{ secrets.VPS_USER }}
+          VPS_SSH_KEY: ~/.ssh/deploy_key
+          DEPLOY_ROOT: ${{ secrets.DEPLOY_ROOT }}
+          COMPOSE_FILE: ${{ vars.COMPOSE_FILE || 'compose.yml' }}
+        run: |
+          bash scripts/deploy_openclaw_stack.sh
+
+      - name: Post-deploy healthcheck
+        shell: bash
+        env:
+          VPS_HOST: ${{ secrets.VPS_HOST }}
+          VPS_USER: ${{ secrets.VPS_USER }}
+          VPS_SSH_KEY: ~/.ssh/deploy_key
+          DEPLOY_ROOT: ${{ secrets.DEPLOY_ROOT }}
+          COMPOSE_FILE: ${{ vars.COMPOSE_FILE || 'compose.yml' }}
+        run: |
+          ssh -i "$VPS_SSH_KEY" -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null \
+            "$VPS_USER@$VPS_HOST" \
+            "cd '$DEPLOY_ROOT' && docker compose -f '$COMPOSE_FILE' ps --format json"
