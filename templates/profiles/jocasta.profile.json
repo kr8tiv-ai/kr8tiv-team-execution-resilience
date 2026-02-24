@@ -1,0 +1,15 @@
+﻿{
+  "agent_name": "JOCASTA",
+  "role": "knowledge_and_context_engineering",
+  "model": {
+    "primary": "nvidia/moonshotai/kimi-k2.5",
+    "fallbacks": [],
+    "providerLock": "nvidia"
+  },
+  "channels": {
+    "telegram": {
+      "botToken": "__INJECT_AT_RUNTIME__"
+    }
+  },
+  "secret_policy": "No keys in git"
+}

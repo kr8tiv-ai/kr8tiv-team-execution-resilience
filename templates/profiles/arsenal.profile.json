@@ -1,0 +1,15 @@
+﻿{
+  "agent_name": "ARSENAL",
+  "role": "reliability_and_security_deputy",
+  "model": {
+    "primary": "openai-codex/gpt-5.3-codex",
+    "fallbacks": [],
+    "providerLock": "openai-codex"
+  },
+  "channels": {
+    "telegram": {
+      "botToken": "__INJECT_AT_RUNTIME__"
+    }
+  },
+  "secret_policy": "No keys in git"
+}
