@@ -46,3 +46,24 @@ For each outage:
 - recovery method used
 - duration to restored heartbeat
 - follow-up policy/document updates
+
+## 6) Multi-Agent Recovery Smoke Protocol
+
+Run a dry run before every release:
+
+```bash
+bash scripts/smoke_verify_recovery.sh --dry-run
+```
+
+Expected output includes:
+
+- `CHECK telegram_ingress`
+- `CHECK agent_health_matrix`
+- `CHECK gsd_stage_guards`
+- `CHECK recovery_under_120s`
+
+Run live verification after deploy:
+
+```bash
+bash scripts/smoke_verify_recovery.sh
+```
