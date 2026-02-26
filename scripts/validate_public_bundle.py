@@ -47,6 +47,20 @@ def scan_path(root: Path) -> list[str]:
     return findings
 
 
+def extract_zip_safely(zip_path: Path, destination: Path) -> None:
+    root = destination.resolve()
+    with zipfile.ZipFile(zip_path) as zf:
+        for entry in zf.infolist():
+            if "\x00" in entry.filename:
+                raise ValueError(f"Unsafe ZIP entry: {entry.filename!r}")
+            candidate = (root / entry.filename).resolve()
+            try:
+                candidate.relative_to(root)
+            except ValueError as exc:
+                raise ValueError(f"Unsafe ZIP entry: {entry.filename!r}") from exc
+        zf.extractall(destination)
+
+
 def main() -> None:
     parser = argparse.ArgumentParser()
     parser.add_argument("--path", required=True, type=Path)
@@ -58,8 +72,7 @@ def main() -> None:
 
     if target.is_file() and target.suffix.lower() == ".zip":
         with tempfile.TemporaryDirectory() as td:
-            with zipfile.ZipFile(target) as zf:
-                zf.extractall(td)
+            extract_zip_safely(target, Path(td))
             findings = scan_path(Path(td))
     else:
         findings = scan_path(target)
