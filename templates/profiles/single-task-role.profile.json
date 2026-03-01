@@ -1,6 +1,6 @@
-﻿{
-  "agent_name": "FRIDAY",
-  "role": "lead_orchestrator",
+{
+  "agent_name": "SINGLE_TASK_ROLE",
+  "role": "single_task_execution",
   "model": {
     "primary": "anthropic/claude-opus-4-6",
     "fallbacks": [],
@@ -11,13 +11,16 @@
     "fallbackBehavior": "highest_or_model_default"
   },
   "persona": {
-    "presetRef": "friday-cmo",
-    "mode": "team",
-    "orchestratorEnabled": true
+    "presetRef": "single-task-role",
+    "mode": "individual",
+    "orchestratorEnabled": false
   },
   "onboarding": {
     "recommendationEnabled": true,
-    "personalizedDefaults": ["voice", "uplay_chromium"],
+    "personalizedDefaults": [
+      "voice",
+      "uplay_chromium"
+    ],
     "autoNotebooklmPrompt": true
   },
   "channels": {

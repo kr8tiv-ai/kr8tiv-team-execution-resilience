@@ -46,12 +46,12 @@ Rules:
 
 ## Model Policy
 
-- Pinned primary models remain role-specific.
+- Pinned primary model for bot runtime is unified and role-consistent.
 - Default behavior is strict provider affinity:
-  - FRIDAY: `openai-codex/gpt-5.3-codex`
-  - ARSENAL: `openai-codex/gpt-5.3-codex`
-  - JOCASTA: `nvidia/moonshotai/kimi-k2.5`
-  - EDITH: `google-gemini-cli/gemini-3.1-pro` (CLI route)
+  - FRIDAY: `anthropic/claude-opus-4-6`
+  - ARSENAL: `anthropic/claude-opus-4-6`
+  - JOCASTA: `anthropic/claude-opus-4-6`
+  - EDITH: `anthropic/claude-opus-4-6`
 - Cross-provider fallback is blocked by default.
 - Optional fallback routes are allowed only when explicitly declared in policy and approved in Mission Control.
 

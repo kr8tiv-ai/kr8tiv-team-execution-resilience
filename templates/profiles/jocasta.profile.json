@@ -2,9 +2,9 @@
   "agent_name": "JOCASTA",
   "role": "knowledge_and_context_engineering",
   "model": {
-    "primary": "nvidia/moonshotai/kimi-k2.5",
+    "primary": "anthropic/claude-opus-4-6",
     "fallbacks": [],
-    "providerLock": "nvidia"
+    "providerLock": "anthropic"
   },
   "reasoningPolicy": {
     "default": "max",
