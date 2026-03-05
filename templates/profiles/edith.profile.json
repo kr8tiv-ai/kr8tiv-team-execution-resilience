@@ -1,10 +1,10 @@
-﻿{
+{
   "agent_name": "EDITH",
   "role": "execution_and_ops_intelligence",
   "model": {
-    "primary": "anthropic/claude-opus-4-6",
+    "primary": "google-gemini-cli/gemini-3-pro-preview",
     "fallbacks": [],
-    "providerLock": "anthropic"
+    "providerLock": "google-gemini-cli"
   },
   "reasoningPolicy": {
     "default": "max",

@@ -3,19 +3,19 @@ updated_by: kr8tiv-team-execution-resilience
 
 agents:
   friday:
-    primary: anthropic/claude-opus-4-6
+    primary: claude-cli/claude-opus-4-6
     fallback: []
 
   arsenal:
-    primary: anthropic/claude-opus-4-6
+    primary: codex-cli/gpt-5.3-codex
     fallback: []
 
   jocasta:
-    primary: anthropic/claude-opus-4-6
+    primary: nvidia/moonshotai/kimi-k2.5
     fallback: []
 
   edith:
-    primary: anthropic/claude-opus-4-6
+    primary: google-gemini-cli/gemini-3-pro-preview
     fallback: []
 
 policy:
@@ -23,10 +23,10 @@ policy:
   allow_runtime_override: false
   require_mission_control_approval_for_route_changes: true
   strict_provider_affinity:
-    friday: anthropic
-    arsenal: anthropic
-    jocasta: anthropic
-    edith: anthropic
+    friday: claude-cli
+    arsenal: codex-cli
+    jocasta: nvidia
+    edith: google-gemini-cli
   fallback_on:
     - rate_limit
     - provider_cooldown
