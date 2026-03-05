@@ -2,9 +2,9 @@
   "agent_name": "ARSENAL",
   "role": "reliability_and_security_deputy",
   "model": {
-    "primary": "anthropic/claude-opus-4-6",
-    "fallbacks": [],
-    "providerLock": "anthropic"
+    "primary": "codex-cli/gpt-5.3-codex",
+    "fallbacks": ["openai-codex/gpt-5.3-codex"],
+    "providerLock": "openai-codex"
   },
   "reasoningPolicy": {
     "default": "max",

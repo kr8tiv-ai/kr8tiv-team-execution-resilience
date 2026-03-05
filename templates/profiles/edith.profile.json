@@ -3,8 +3,8 @@
   "role": "execution_and_ops_intelligence",
   "model": {
     "primary": "google-gemini-cli/gemini-3-pro-preview",
-    "fallbacks": [],
-    "providerLock": "google-gemini-cli"
+    "fallbacks": ["google/gemini-3-pro-preview"],
+    "providerLock": "google"
   },
   "reasoningPolicy": {
     "default": "max",
