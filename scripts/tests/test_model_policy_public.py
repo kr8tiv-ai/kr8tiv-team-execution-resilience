@@ -8,7 +8,7 @@ def test_bot_runtime_model_policy_matches_canonical_lanes() -> None:
     agents = data["agents"]
     expected_models = {
         "friday": ("claude-cli/claude-opus-4-6", ["anthropic/claude-opus-4-6"]),
-        "arsenal": ("codex-cli/gpt-5.3-codex", ["openai-codex/gpt-5.3-codex"]),
+        "arsenal": ("codex-cli/gpt-5.4", ["openai-codex/gpt-5.4"]),
         "jocasta": ("nvidia/moonshotai/kimi-k2.5", []),
         "edith": ("google-gemini-cli/gemini-3-pro-preview", ["google/gemini-3-pro-preview"]),
     }
@@ -36,8 +36,8 @@ def test_role_profiles_match_canonical_lanes() -> None:
             "anthropic",
         ),
         "arsenal": (
-            "codex-cli/gpt-5.3-codex",
-            ["openai-codex/gpt-5.3-codex"],
+            "codex-cli/gpt-5.4",
+            ["openai-codex/gpt-5.4"],
             "openai-codex",
         ),
         "jocasta": ("nvidia/moonshotai/kimi-k2.5", [], "nvidia"),

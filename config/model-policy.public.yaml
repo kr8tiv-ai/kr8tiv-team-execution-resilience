@@ -1,4 +1,4 @@
-﻿version: 1
+version: 1
 updated_by: kr8tiv-team-execution-resilience
 
 agents:
@@ -8,9 +8,9 @@ agents:
       - anthropic/claude-opus-4-6
 
   arsenal:
-    primary: codex-cli/gpt-5.3-codex
+    primary: codex-cli/gpt-5.4
     fallback:
-      - openai-codex/gpt-5.3-codex
+      - openai-codex/gpt-5.4
 
   jocasta:
     primary: nvidia/moonshotai/kimi-k2.5

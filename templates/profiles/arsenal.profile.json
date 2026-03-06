@@ -1,9 +1,9 @@
-﻿{
+{
   "agent_name": "ARSENAL",
   "role": "reliability_and_security_deputy",
   "model": {
-    "primary": "codex-cli/gpt-5.3-codex",
-    "fallbacks": ["openai-codex/gpt-5.3-codex"],
+    "primary": "codex-cli/gpt-5.4",
+    "fallbacks": ["openai-codex/gpt-5.4"],
     "providerLock": "openai-codex"
   },
   "reasoningPolicy": {
